@@ -1,4 +1,4 @@
-FROM ubuntu:focal
+FROM nvcr.io/nvidia/pytorch:23.02-py3
 LABEL maintainer="myoung34@my.apsu.edu"
 
 ARG DUMB_INIT_VERSION="1.2.2"
