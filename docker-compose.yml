@@ -1,17 +1,27 @@
-version: '2.3'
+name: qt-coyotes
+
 services:
-  worker:
-    build: .
+  github-runner-base:
+    image: qt-coyotes/github-runner-base
+    build:
+      context: .
+      dockerfile: Dockerfile.base
+  github-runner:
+    build:
+      context: .
+      dockerfile: Dockerfile
     environment:
       REPO_URL: https://github.com/qt-coyotes/mange-classifier
       RUNNER_NAME: arvp
-      RUNNER_TOKEN: TOKEN
+      ACCESS_TOKEN: TOKEN
       RUNNER_WORKDIR: /tmp/runner/work
       RUNNER_SCOPE: 'repo'
       LABELS: linux,x64,gpu
+    image: qt-coyotes/github-runner
     security_opt:
       # needed on SELinux systems to allow docker container to manage other docker containers
       - label:disable
+    shm_size: '8gb'
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - '/tmp/runner:/tmp/runner'
