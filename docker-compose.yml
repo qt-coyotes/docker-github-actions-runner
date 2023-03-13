@@ -18,6 +18,7 @@ services:
       RUNNER_SCOPE: 'repo'
       LABELS: linux,x64,gpu
     image: qt-coyotes/github-runner
+    privileged: true
     security_opt:
       # needed on SELinux systems to allow docker container to manage other docker containers
       - label:disable
