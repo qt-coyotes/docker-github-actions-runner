@@ -24,7 +24,7 @@ services:
     security_opt:
       # needed on SELinux systems to allow docker container to manage other docker containers
       - label:disable
-    shm_size: '8gb'
+    shm_size: '24gb'
     volumes:
       - '/var/run/docker.sock:/var/run/docker.sock'
       - '/tmp/runner:/tmp/runner'
